@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -215,9 +220,8 @@ _G.packer_plugins = {
     url = "https://github.com/HiPhish/nvim-ts-rainbow2"
   },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/novis/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
@@ -230,10 +234,10 @@ _G.packer_plugins = {
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  sniprun = {
+  ["tabout.nvim"] = {
     loaded = true,
-    path = "/home/novis/.local/share/nvim/site/pack/packer/start/sniprun",
-    url = "https://github.com/michaelb/sniprun"
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/tabout.nvim",
+    url = "https://github.com/abecodes/tabout.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
@@ -244,6 +248,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-bbye"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/vim-bbye",
+    url = "https://github.com/moll/vim-bbye"
+  },
+  ["vim-jukit"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/vim-jukit",
+    url = "https://github.com/luk400/vim-jukit"
   },
   ["vim-maximizer"] = {
     loaded = true,

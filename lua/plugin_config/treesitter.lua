@@ -6,7 +6,7 @@ require'nvim-treesitter.configs'.setup {
     },
     indent = { enable = true },
     autotag = { enable = true },
-    auto_install = true,
+    auto_install = false,
     -- rainbow brackets
     rainbow = {
       enable = true,

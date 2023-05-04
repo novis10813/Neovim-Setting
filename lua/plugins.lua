@@ -44,6 +44,8 @@ return packer.startup(function(use)
 	use("nvim-tree/nvim-tree.lua")
 	--status bar below
 	use("nvim-lualine/lualine.nvim")
+	-- lsp progress
+	use("arkav/lualine-lsp-progress")
 	--lsp server
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
@@ -60,6 +62,7 @@ return packer.startup(function(use)
 	-- snippet engine
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
+	-- snippets of vscode
 	use("rafamadriz/friendly-snippets")
 	-- tabnine
 	use({ "tzachar/cmp-tabnine", run = "./install.sh" })
@@ -68,10 +71,14 @@ return packer.startup(function(use)
 	use("windwp/nvim-ts-autotag")
 	-- rainbow brackets
 	use("HiPhish/nvim-ts-rainbow2")
+	-- surround
+	use("kylechui/nvim-surround")
 	-- indent
 	use("lukas-reineke/indent-blankline.nvim")
 	--smooth scroll
 	use("karb94/neoscroll.nvim")
+	-- leap
+	use("ggandor/leap.nvim")
 	-- which key
 	use("folke/which-key.nvim")
 	-- tmux
@@ -100,6 +107,8 @@ return packer.startup(function(use)
 	use({ "abecodes/tabout.nvim", require = { "nvim-treesitter" } })
 	-- dashboard
 	use("goolord/alpha-nvim")
+	-- terminal
+	use("voldikss/vim-floaterm")
 	if packer_bootstrap then
 		require("packer").sync()
 	end

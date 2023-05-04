@@ -31,13 +31,13 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- tab is confirm
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		{ name = "nvim_lsp", keyword_length = 2, max_item_count = 6 },
+		{ name = "cmp_tabnine", max_item_count = 4 },
 	}, {
-		{ name = "path" },
-		{ name = "buffer", keyword_length = 3 },
-		{ name = "cmdline", keyword_length = 3 },
-		{ name = "cmp_tabnine", keyword_length = 4 },
+		{ name = "luasnip", keyword_length = 2, max_item_count = 2 },
+		{ name = "path", keyword_length = 3, max_item_count = 4 },
+		{ name = "buffer", keyword_length = 3, max_item_count = 4 },
+		{ name = "cmdline", keyword_length = 3, max_item_count = 4 },
 	}),
 	window = {
 		documentation = cmp.config.window.bordered(),

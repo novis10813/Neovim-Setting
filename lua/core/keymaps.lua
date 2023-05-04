@@ -66,7 +66,7 @@ keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>") -- jump to previo
 keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- jump to next error
 keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>") -- see documentation
 keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
-
+keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
 -- jupyter controls
 keymap.set("n", "<leader>jp", ":JukitOut conda activate py3.8<CR>")
 -- Window and Sending Codes

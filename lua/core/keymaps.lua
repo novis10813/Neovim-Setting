@@ -5,6 +5,9 @@ g.mapleader = " "
 g.maplocalleader = " "
 -- setup path of python for plugin integration
 g.python3_host_prog = "/home/novis/miniconda3/envs/py3.8/bin/python3"
+-- floaterm settings
+g.floaterm_keymap_toggle = "<F12>"
+-- keymap.set("n", "<leader>ft", ":FloatermToggle<CR>")
 -- j k to leave insert mode
 keymap.set("i", "jk", "<ESC>")
 -- clear search highlight

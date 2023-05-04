@@ -1,5 +1,8 @@
 local g = vim.g
 local keymap = vim.keymap
+vim.o.timeout = true
+vim.o.timeoutlen = 300
+vim.wo.number = true
 -- setup leader key
 g.mapleader = " "
 g.maplocalleader = " "
@@ -7,27 +10,21 @@ g.maplocalleader = " "
 g.python3_host_prog = "/home/novis/miniconda3/envs/py3.8/bin/python3"
 -- floaterm settings
 g.floaterm_keymap_toggle = "<F12>"
--- keymap.set("n", "<leader>ft", ":FloatermToggle<CR>")
 -- j k to leave insert mode
 keymap.set("i", "jk", "<ESC>")
 -- clear search highlight
-keymap.set("n", "<leader>nh", ":nohl<CR>")
-keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "clear search highlight" })
 -- delete key with going back
 keymap.set("n", "x", '"_x')
 -- increase and decrease number
 keymap.set("n", "<leader>+", "<C-a>")
 keymap.set("n", "<leader>-", "<C-x>")
--- split window vertically
-keymap.set("n", "<leader>wv", "<C-w>v")
--- split window horizontally
-keymap.set("n", "<leader>wh", "<C-w>s")
--- make split windows equal width
-keymap.set("n", "<leader>we", "<C-w>=")
--- close current split window
-keymap.set("n", "<leader>wx", ":close<CR>")
--- maximize split window
-keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>")
+-- window
+keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split Vertically" })
+keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split Horizontally" })
+keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make Equally" })
+keymap.set("n", "<leader>wx", ":close<CR>", { desc = "Close Current" })
+keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>", { desc = "Maximize Current" })
 -- adjust window size
 keymap.set("n", "<C-Up>", ":resize +2<CR>")
 keymap.set("n", "<C-Down>", ":resize -2<CR>")
@@ -35,22 +32,22 @@ keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
 keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 -- open new tab, close tab, go to next, go to prev
 -- tab: collections of windows
-keymap.set("n", "<leader>to", ":tabnew<CR>")
-keymap.set("n", "<leader>tx", ":tabclose<CR>")
-keymap.set("n", "<leader>tn", "tabn<CR>")
-keymap.set("n", "<leader>tp", ":tabp<CR>")
+keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open Tab" })
+keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close Tab" })
+keymap.set("n", "<leader>tl", "tabn<CR>", { desc = "Next Tab" })
+keymap.set("n", "<leader>th", ":tabp<CR>", { desc = "Prev Tab" })
 -- bufferlines move between buffers (buffer just like tabs in vscode)
-keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>")
-keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>")
-keymap.set("n", "<leader>bx", ":Bdelete<CR>")
+keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
+keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>", { desc = "Prev Buffer" })
+keymap.set("n", "<leader>bx", ":Bdelete<CR>", { desc = "Delete Buffer" })
 -- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>")
+keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle NvimTree" })
 --telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
+keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
+keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Grep String" })
+keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find Buffers" })
+keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Tags" })
 
 -- visual mode
 -- shift + "<" or ">" to move lines
@@ -95,4 +92,16 @@ keymap.set("n", "<leader>jp", ":JukitOut conda activate py3.8<CR>")
 -- file conversion
 -- <leader>np Conver between ipynb and py
 
-vim.wo.number = true
+-- plugin keymap setups with whichkey
+local wk_status, wk = pcall(require, "which-key")
+if not wk_status then
+	return
+end
+
+wk.register({
+	["<leader>f"] = { name = "+file" },
+	["<leader>b"] = { name = "+buffer" },
+	["<leader>t"] = { name = "+tab" },
+	["<leader>w"] = { name = "+window" },
+	["<leader>c"] = { name = "+cell" },
+})

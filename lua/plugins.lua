@@ -66,6 +66,8 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets")
 	-- tabnine
 	use({ "tzachar/cmp-tabnine", run = "./install.sh" })
+	-- codeium
+	use("Exafunction/codeium.vim")
 	-- auto pairs
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
@@ -109,6 +111,8 @@ return packer.startup(function(use)
 	use("goolord/alpha-nvim")
 	-- terminal
 	use("voldikss/vim-floaterm")
+	-- lazygit integration
+	use("kdheepak/lazygit.nvim")
 	if packer_bootstrap then
 		require("packer").sync()
 	end

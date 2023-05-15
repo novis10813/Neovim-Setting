@@ -10,7 +10,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
 	sources = {
-		formatting.isort,
+		formatting.black,
 		formatting.clang_format,
 		formatting.stylua,
 		diagnostics.cpplint,

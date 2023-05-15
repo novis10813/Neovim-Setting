@@ -32,7 +32,7 @@ mason_lspconfig.setup({
 
 mason_null_ls.setup({
 	ensure_installed = {
-		"isort",
+		"black",
 		"stylua",
 		"flake8",
 		"cpplint",

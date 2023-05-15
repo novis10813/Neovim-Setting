@@ -15,6 +15,37 @@ end
 
 require("luasnip/loaders/from_vscode").lazy_load()
 vim.opt.completeopt = "menu,menuone,noselect"
+
+lspkind.init({
+	symbol_map = {
+		Text = "󰉿",
+		Method = "󰆧",
+		Function = "󰊕",
+		Constructor = "",
+		Field = "󰜢",
+		Variable = "󰀫",
+		Class = "󰠱",
+		Interface = "",
+		Module = "",
+		Property = "󰜢",
+		Unit = "󰑭",
+		Value = "󰎠",
+		Enum = "",
+		Keyword = "󰌋",
+		Snippet = "",
+		Color = "󰏘",
+		File = "󰈙",
+		Reference = "󰈇",
+		Folder = "󰉋",
+		EnumMember = "",
+		Constant = "󰏿",
+		Struct = "󰙅",
+		Event = "",
+		Operator = "󰆕",
+		TypeParameter = "",
+	},
+})
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -31,13 +62,12 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- tab is confirm
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp", keyword_length = 2, max_item_count = 6 },
 		{ name = "cmp_tabnine", max_item_count = 4 },
+		{ name = "nvim_lsp", keyword_length = 2, max_item_count = 6 },
 	}, {
-		{ name = "luasnip", keyword_length = 2, max_item_count = 2 },
-		{ name = "path", keyword_length = 3, max_item_count = 4 },
-		{ name = "buffer", keyword_length = 3, max_item_count = 4 },
-		{ name = "cmdline", keyword_length = 3, max_item_count = 4 },
+		-- { name = "luasnip", keyword_length = 2, max_item_count = 1 },
+		{ name = "path", keyword_length = 3, max_item_count = 2 },
+		{ name = "buffer", keyword_length = 3, max_item_count = 2 },
 	}),
 	window = {
 		documentation = cmp.config.window.bordered(),
@@ -47,8 +77,20 @@ cmp.setup({
 		format = lspkind.cmp_format({
 			maxwidth = 50,
 			ellipsis_char = "...",
+			before = function(entry, vim_item)
+				vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol_text" })
+				if entry.source.name == "cmp_tabnine" then
+					local detail = (entry.completion_item.labelDetails or {}).detail
+					vim_item.kind = ""
+					if detail and detail:find(".*%%.*") then
+						vim_item.kind = vim_item.kind .. " Tabnine"
+					end
+				end
+				return vim_item
+			end,
 		}),
 	},
 })
+
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

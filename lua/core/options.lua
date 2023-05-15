@@ -22,17 +22,17 @@ opt.smartcase = true
 
 -- indent
 opt.list = true
-opt.listchars:append "space:⋅"
-opt.listchars:append "eol:↴"
+opt.listchars:append("space:⋅")
+opt.listchars:append("eol:↴")
 
 --clipboard
-opt.clipboard:append('unnamedplus')
+opt.clipboard:append("unnamedplus")
 
 -- split window
 opt.splitright = true
 opt.splitbelow = true
-opt.iskeyword:append('-')
+opt.iskeyword:append("-")
 
--- appearance   
+-- appearance
 opt.termguicolors = true
 opt.background = "dark"

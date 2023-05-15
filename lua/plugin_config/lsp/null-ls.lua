@@ -5,7 +5,6 @@ end
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
-local completion = null_ls.builtins.completion
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
@@ -15,7 +14,6 @@ null_ls.setup({
 		formatting.stylua,
 		diagnostics.cpplint,
 		diagnostics.flake8,
-		completion.luasnip,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

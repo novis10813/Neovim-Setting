@@ -84,6 +84,16 @@ _G.packer_plugins = {
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["alpha-nvim"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
+  },
+  ["alternate-toggler"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/alternate-toggler",
+    url = "https://github.com/rmagatti/alternate-toggler"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -119,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["codeium.vim"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/codeium.vim",
+    url = "https://github.com/Exafunction/codeium.vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -139,6 +154,16 @@ _G.packer_plugins = {
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -148,6 +173,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
     url = "https://github.com/glepnir/lspsaga.nvim"
+  },
+  ["lualine-lsp-progress"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/lualine-lsp-progress",
+    url = "https://github.com/arkav/lualine-lsp-progress"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -198,6 +228,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -254,6 +289,11 @@ _G.packer_plugins = {
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
   },
+  ["vim-floaterm"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/vim-floaterm",
+    url = "https://github.com/voldikss/vim-floaterm"
+  },
   ["vim-jukit"] = {
     loaded = true,
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/vim-jukit",
@@ -268,6 +308,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/novis/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  ["vim-visual-multi"] = {
+    loaded = true,
+    path = "/home/novis/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
+    url = "https://github.com/mg979/vim-visual-multi"
   },
   ["which-key.nvim"] = {
     loaded = true,

@@ -67,6 +67,8 @@ keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- jump to next e
 keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>") -- see documentation
 keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
 keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
+-- toggleAlternate
+keymap.set("n", "<leader>ta", ":ToggleAlternate<CR>")
 -- lazygit
 keymap.set("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit" })
 -- jupyter controls
@@ -79,6 +81,8 @@ keymap.set("n", "<leader>38", ":JukitOut conda activate py3.8<CR>")
 -- <leader>ohd Close both windows
 -- <leader><space> Send code within the current to the output window
 -- <CR> Send current line to output split
+keymap.set("n", "<A-CR>", "<cmd>call jukit#send#line()<cr>", { noremap = true, silent = true })
+keymap.set("v", "<A-CR>", "<esc><cmd>call jukit#send#selection(0)<cr>", { noremap = true, silent = true })
 -- <leader>cc Execute all the cells until the current cell
 -- <leader>all Execute all cells
 -- Cells

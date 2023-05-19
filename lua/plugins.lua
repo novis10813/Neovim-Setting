@@ -75,6 +75,10 @@ return packer.startup(function(use)
 	use("HiPhish/nvim-ts-rainbow2")
 	-- surround
 	use("kylechui/nvim-surround")
+	-- toggler for true and false
+	use("rmagatti/alternate-toggler")
+	-- multiline
+	use({ "mg979/vim-visual-multi", branch = "master" })
 	-- indent
 	use("lukas-reineke/indent-blankline.nvim")
 	--smooth scroll

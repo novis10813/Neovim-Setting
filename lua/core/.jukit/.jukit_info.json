@@ -1,1 +1,1 @@
-{"cmd": "\nfor i in array:\n    print(i)\n", "cmd_opts": " --cell_id=jdaEID9Wq9 -s", "import_complete": 1, "terminal": "nvimterm"}
+{"cmd": "keymap.set(\"n\", \"<A-CR>\", \"<cmd>call jukit#send#line()<cr>\", { noremap = true, silent = true })", "cmd_opts": "", "import_complete": 1, "terminal": "nvimterm"}

@@ -28,6 +28,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	-- lua functions that many plugins use
 	use("nvim-lua/plenary.nvim")
+	use("nvim-lua/popup.nvim")
 	-- icons for many projects
 	use("nvim-tree/nvim-web-devicons")
 	-- colors of the words for different programming language
@@ -92,9 +93,11 @@ return packer.startup(function(use)
 	use("szw/vim-maximizer")
 	-- commenting with gc
 	use("numToStr/Comment.nvim")
-	-- fuzzy finding
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	-- Telescope
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
+	-- Telescope extensions
+	-- fzf
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim")

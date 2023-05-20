@@ -43,12 +43,22 @@ keymap.set("n", "<leader>bx", ":Bdelete<CR>", { desc = "Delete Buffer" })
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle NvimTree" })
 --telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
+-- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
+keymap.set(
+	"n",
+	"<leader>ff",
+	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+	{ desc = "Find Files" }
+)
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Grep String" })
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find Buffers" })
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Tags" })
 
+-- Codeium
+keymap.set("i", "<C-e>", function()
+	return vim.fn["codeium#Clear"]()
+end, { expr = true })
 -- visual mode
 -- shift + "<" or ">" to move lines
 keymap.set("v", "<", "<gv")
@@ -57,16 +67,18 @@ keymap.set("v", ">", ">gv")
 keymap.set("v", "<A-j>", ":m .+2<CR>==")
 keymap.set("v", "<A-k>", ":m .-2<CR>==")
 -- lsp server
-keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>") -- find solution for error
-keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>") -- rename class, functions, etc
+keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>") -- find solution for error
 keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>")
 keymap.set("n", "<leader>D", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>") -- jump to previous error
 keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- jump to next error
-keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>") -- see documentation
-keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
+-- see documentation
+keymap.set("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>") -- ++keep make it stay on the upper right corner
+-- Rename all occurrences of the hovered word for the entire file
+keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
 keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
+keymap.set("n", "gp", "<cmd>Lspsaga goto_definition<CR>")
 -- toggleAlternate
 keymap.set("n", "<leader>ta", ":ToggleAlternate<CR>")
 -- lazygit

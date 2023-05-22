@@ -1,1 +1,0 @@
-{"cmd": "keymap.set(\"n\", \"<A-CR>\", \"<cmd>call jukit#send#line()<cr>\", { noremap = true, silent = true })", "cmd_opts": "", "import_complete": 1, "terminal": "nvimterm"}

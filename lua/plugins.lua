@@ -41,6 +41,8 @@ return packer.startup(function(use)
 	})
 	-- the theme
 	use("ellisonleao/gruvbox.nvim")
+	-- colorizer
+	use("NvChad/nvim-colorizer.lua")
 	--tree on the left
 	use("nvim-tree/nvim-tree.lua")
 	--status bar below

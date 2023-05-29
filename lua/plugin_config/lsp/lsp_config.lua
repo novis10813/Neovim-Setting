@@ -25,9 +25,19 @@ lspconfig["lua_ls"].setup({
 			},
 		},
 	},
+	handlers = {
+		["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+			virtual_text = false,
+		}),
+	},
 })
 lspconfig["pyright"].setup({
 	capabilities = capabilities,
+	handlers = {
+		["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+			virtual_text = false,
+		}),
+	},
 })
 
 lspconfig["clangd"].setup({
@@ -35,5 +45,10 @@ lspconfig["clangd"].setup({
 	cmd = {
 		"clangd",
 		"--offset-encoding=utf-16",
+	},
+	handlers = {
+		["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+			virtual_text = false,
+		}),
 	},
 })

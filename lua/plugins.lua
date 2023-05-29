@@ -39,6 +39,7 @@ return packer.startup(function(use)
 			ts_update()
 		end,
 	})
+	use({ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" })
 	-- the theme
 	use("ellisonleao/gruvbox.nvim")
 	-- colorizer
@@ -48,11 +49,13 @@ return packer.startup(function(use)
 	--status bar below
 	use("nvim-lualine/lualine.nvim")
 	-- lsp progress
-	use("arkav/lualine-lsp-progress")
+	use("j-hui/fidget.nvim")
 	--lsp server
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
+	-- Diagnostics troubles
+	use("folke/trouble.nvim")
 	-- configuring lsp servers
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
 	use("onsails/lspkind.nvim")
@@ -62,6 +65,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
+	use("lukas-reineke/cmp-under-comparator")
 	-- snippet engine
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
@@ -114,14 +118,19 @@ return packer.startup(function(use)
 	use("akinsho/bufferline.nvim")
 	-- close buffer
 	use("moll/vim-bbye")
-	-- tabout
-	use({ "abecodes/tabout.nvim", require = { "nvim-treesitter" } })
 	-- dashboard
 	use("goolord/alpha-nvim")
 	-- terminal
 	use("voldikss/vim-floaterm")
 	-- lazygit integration
 	use("kdheepak/lazygit.nvim")
+	-- select virtual environment for python
+	use("AckslD/swenv.nvim")
+	-- move line and block up and down
+	use("matze/vim-move")
+	-- splitting or joining blocks of code
+	use({ "Wansmer/treesj", requires = { "nvim-treesitter" } })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

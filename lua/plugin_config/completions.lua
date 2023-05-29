@@ -61,6 +61,18 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- tab is confirm
 	}),
+	sorting = {
+		comparators = {
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.score,
+			require("cmp-under-comparator").under,
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
+			cmp.config.compare.order,
+		},
+	},
 	sources = cmp.config.sources({
 		{ name = "cmp_tabnine", max_item_count = 4 },
 		{ name = "nvim_lsp", keyword_length = 2, max_item_count = 6 },

@@ -79,7 +79,9 @@ end
 nvim_tree.setup({
 	on_attach = on_attach,
 	hijack_cursor = true,
+	sync_root_with_cwd = true,
 	view = {
+		cursorline = true,
 		width = 25,
 		preserve_window_proportions = true,
 		mappings = {
@@ -90,6 +92,17 @@ nvim_tree.setup({
 	},
 	renderer = {
 		group_empty = true,
+		indent_markers = {
+			enable = true,
+			inline_arrows = true,
+			icons = {
+				corner = "└",
+				edge = "|",
+				item = "|",
+				bottom = "─",
+				none = " ",
+			},
+		},
 	},
 	filters = {
 		dotfiles = true,

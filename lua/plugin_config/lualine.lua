@@ -15,8 +15,5 @@ lualine.setup({
 				path = 1,
 			},
 		},
-		lualine_c = {
-			"lsp_progress",
-		},
 	},
 })

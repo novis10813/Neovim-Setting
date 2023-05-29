@@ -63,52 +63,24 @@ end, { expr = true })
 -- shift + "<" or ">" to move lines
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
--- Move text up and down
-keymap.set("v", "<A-j>", ":m .+2<CR>==")
-keymap.set("v", "<A-k>", ":m .-2<CR>==")
--- lsp server
-keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
-keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>") -- find solution for error
-keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>")
-keymap.set("n", "<leader>D", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>") -- jump to previous error
-keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- jump to next error
--- see documentation
-keymap.set("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>") -- ++keep make it stay on the upper right corner
+-- lsp saga
 -- Rename all occurrences of the hovered word for the entire file
 keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
 keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
 keymap.set("n", "gp", "<cmd>Lspsaga goto_definition<CR>")
+-- trouble
+keymap.set("n", "gt", "<cmd>TroubleToggle<cr>")
 -- toggleAlternate
 keymap.set("n", "<leader>ta", ":ToggleAlternate<CR>")
+-- treesj
+keymap.set("n", "<leader>tj", ":TSJToggle<CR>")
 -- lazygit
 keymap.set("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit" })
 -- jupyter controls
 keymap.set("n", "<leader>38", ":JukitOut conda activate py3.8<CR>")
 -- Window and Sending Codes
--- <leader>os Open new output window
--- <leader>hs Open new history output window
--- <leader>od Close output window
--- <leader>hd Close history window
--- <leader>ohd Close both windows
--- <leader><space> Send code within the current to the output window
--- <CR> Send current line to output split
 keymap.set("n", "<A-CR>", "<cmd>call jukit#send#line()<cr>", { noremap = true, silent = true })
 keymap.set("v", "<A-CR>", "<esc><cmd>call jukit#send#selection(0)<cr>", { noremap = true, silent = true })
--- <leader>cc Execute all the cells until the current cell
--- <leader>all Execute all cells
--- Cells
--- <leader>co/O o:create cell below, O:above
--- <leader>ct/T t:create text below, T:above
--- <leader>cm/M m:merge cell below, M:above
--- <leader>cd Delete current cell
--- <leader>cs Split current cell
--- <leader>ck Move current cell up
--- <leader>cj Move current cell down
--- <leader>J Go to next cell
--- <leader>K Go to previous cell
--- file conversion
--- <leader>np Conver between ipynb and py
 
 -- plugin keymap setups with whichkey
 local wk_status, wk = pcall(require, "which-key")

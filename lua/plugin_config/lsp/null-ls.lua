@@ -5,6 +5,7 @@ end
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
+local code_actions = null_ls.builtins.code_actions
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
@@ -12,8 +13,17 @@ null_ls.setup({
 		formatting.black,
 		formatting.clang_format,
 		formatting.stylua,
-		diagnostics.cpplint,
-		diagnostics.flake8,
+		diagnostics.cpplint.with({
+			diagnostic_config = {
+				virtual_text = false,
+			},
+		}),
+		diagnostics.flake8.with({
+			diagnostic_config = {
+				virtual_text = false,
+			},
+		}),
+		code_actions.gitsigns,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

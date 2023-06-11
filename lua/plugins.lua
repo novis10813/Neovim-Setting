@@ -42,6 +42,7 @@ return packer.startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" })
 	-- the theme
 	use("ellisonleao/gruvbox.nvim")
+	use("folke/tokyonight.nvim")
 	-- colorizer
 	use("NvChad/nvim-colorizer.lua")
 	--tree on the left
@@ -54,6 +55,8 @@ return packer.startup(function(use)
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
+	--semantic tokens
+	use("theHamsta/nvim-semantic-tokens")
 	-- Diagnostics troubles
 	use("folke/trouble.nvim")
 	-- configuring lsp servers
@@ -81,7 +84,7 @@ return packer.startup(function(use)
 	-- rainbow brackets
 	use("HiPhish/nvim-ts-rainbow2")
 	-- surround
-	use("kylechui/nvim-surround")
+	use({ "kylechui/nvim-surround", tag = "*" })
 	-- toggler for true and false
 	use("rmagatti/alternate-toggler")
 	-- multiline
@@ -104,6 +107,8 @@ return packer.startup(function(use)
 	-- Telescope extensions
 	-- fzf
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	-- select ui
+	use("nvim-telescope/telescope-ui-select.nvim")
 
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -130,6 +135,8 @@ return packer.startup(function(use)
 	use("matze/vim-move")
 	-- splitting or joining blocks of code
 	use({ "Wansmer/treesj", requires = { "nvim-treesitter" } })
+	-- better w,e,b
+	use("chrisgrieser/nvim-spider")
 
 	if packer_bootstrap then
 		require("packer").sync()

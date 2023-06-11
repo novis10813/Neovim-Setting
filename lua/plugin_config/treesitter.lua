@@ -35,6 +35,8 @@ treesitter.setup({
 				["if"] = "@function.inner",
 				["ac"] = "@class.outer",
 				["ic"] = "@class.inner",
+				["al"] = "@loop.outer",
+				["il"] = "@loop.inner",
 			},
 			selection_modes = {
 				["@parameter.outer"] = "v",
@@ -46,8 +48,9 @@ treesitter.setup({
 			enable = true,
 			set_jumps = true, -- whether to set jumps in the jumplist
 			goto_next_start = {
-				["]m"] = "@function.outer",
-				["]]"] = { query = "@class.outer", desc = "Next class start" },
+				["]f"] = { query = "@function.outer", desc = "Next function start" },
+				["]c"] = { query = "@class.outer", desc = "Next class start" },
+				["]l"] = { query = "@loop.outer", desc = "Next loop start" },
 				--
 				-- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queires.
 				["]o"] = "@loop.*",
@@ -59,16 +62,19 @@ treesitter.setup({
 				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
 			},
 			goto_next_end = {
-				["]M"] = "@function.outer",
-				["]["] = "@class.outer",
+				["]F"] = { query = "@function.outer", desc = "Next function end" },
+				["]C"] = { query = "@class.outer", desc = "Next class end" },
+				["]L"] = { query = "@loop.outer", desc = "Next loop end" },
 			},
 			goto_previous_start = {
-				["[m"] = "@function.outer",
-				["[["] = "@class.outer",
+				["[f"] = { query = "@function.outer", desc = "Previous function start" },
+				["[c"] = { query = "@class.outer", desc = "Previous class start" },
+				["[l"] = { query = "@loop.outer", desc = "Previous loop start" },
 			},
 			goto_previous_end = {
-				["[M"] = "@function.outer",
-				["[]"] = "@class.outer",
+				["[F"] = { query = "@function.outer", desc = "Previous function end" },
+				["[C"] = { query = "@class.outer", desc = "Previous class end" },
+				["[L"] = { query = "@loop.outer", desc = "Previous loop end" },
 			},
 			-- Below will go to either the start or the end, whichever is closer.
 			-- Use if you want more granular movements

@@ -8,7 +8,7 @@ neoscroll.setup({
 	stop_eof = true,
 	respect_scrolloff = false,
 	cursor_scrolls_alone = true,
-	easing_function = nil,
+	easing_function = "sine",
 	pre_hook = nil,
 	performance_mode = false,
 })

@@ -25,7 +25,21 @@ telescope.setup({
 			override_file_sorter = true,
 			case_mode = "smart_case",
 		},
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({
+				width = 0.8,
+				previewer = false,
+				prompt_title = false,
+				borderchars = {
+					{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+					prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+					results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+					preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+				},
+			}),
+		},
 	},
 })
 
 telescope.load_extension("fzf")
+telescope.load_extension("ui-select")

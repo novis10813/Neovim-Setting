@@ -1,144 +1,124 @@
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 
-local packer_bootstrap = ensure_packer()
+vim.opt.rtp:prepend(lazypath)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- Autocommand that reloads neovim whenever you save this file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
-local status, packer = pcall(require, "packer")
-if not status then
-	return
-end
-
-return packer.startup(function(use)
-	use("wbthomason/packer.nvim")
-	-- lua functions that many plugins use
-	use("nvim-lua/plenary.nvim")
-	use("nvim-lua/popup.nvim")
+require("lazy").setup({
+	-- lua functions that many plugins
+	"nvim-lua/plenary.nvim",
+	"nvim-lua/popup.nvim",
 	-- icons for many projects
-	use("nvim-tree/nvim-web-devicons")
+	"nvim-tree/nvim-web-devicons",
 	-- colors of the words for different programming language
-	use({
+	{
 		"nvim-treesitter/nvim-treesitter",
-		run = function()
+		build = function()
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
-	})
-	use({ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" })
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+	},
 	-- the theme
-	use("ellisonleao/gruvbox.nvim")
-	use("folke/tokyonight.nvim")
+	"ellisonleao/gruvbox.nvim",
 	-- colorizer
-	use("NvChad/nvim-colorizer.lua")
+	"NvChad/nvim-colorizer.lua",
 	--tree on the left
-	use("nvim-tree/nvim-tree.lua")
+	"nvim-tree/nvim-tree.lua",
 	--status bar below
-	use("nvim-lualine/lualine.nvim")
+	"nvim-lualine/lualine.nvim",
 	-- lsp progress
-	use("j-hui/fidget.nvim")
+	{ "j-hui/fidget.nvim", branch = "legacy" },
 	--lsp server
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	use("neovim/nvim-lspconfig")
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"neovim/nvim-lspconfig",
 	--semantic tokens
-	use("theHamsta/nvim-semantic-tokens")
+	"theHamsta/nvim-semantic-tokens",
 	-- Diagnostics troubles
-	use("folke/trouble.nvim")
+	"folke/trouble.nvim",
 	-- configuring lsp servers
-	use({ "glepnir/lspsaga.nvim", branch = "main" })
-	use("onsails/lspkind.nvim")
+	{ "glepnir/lspsaga.nvim", branch = "main" },
+	"onsails/lspkind.nvim",
 	-- auto completion
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("lukas-reineke/cmp-under-comparator")
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"lukas-reineke/cmp-under-comparator",
 	-- snippet engine
-	use("L3MON4D3/LuaSnip")
-	use("saadparwaiz1/cmp_luasnip")
+	"L3MON4D3/LuaSnip",
+	"saadparwaiz1/cmp_luasnip",
 	-- snippets of vscode
-	use("rafamadriz/friendly-snippets")
+	"rafamadriz/friendly-snippets",
 	-- tabnine
-	use({ "tzachar/cmp-tabnine", run = "./install.sh" })
+	{ "tzachar/cmp-tabnine", build = "./install.sh" },
 	-- codeium
-	use("Exafunction/codeium.vim")
+	"Exafunction/codeium.vim",
 	-- auto pairs
-	use("windwp/nvim-autopairs")
-	use("windwp/nvim-ts-autotag")
+	"windwp/nvim-autopairs",
+	"windwp/nvim-ts-autotag",
 	-- rainbow brackets
-	use("HiPhish/nvim-ts-rainbow2")
+	"HiPhish/nvim-ts-rainbow2",
 	-- surround
-	use({ "kylechui/nvim-surround", tag = "*" })
+	{ "kylechui/nvim-surround", version = "*" },
 	-- toggler for true and false
-	use("rmagatti/alternate-toggler")
-	-- multiline
-	use({ "mg979/vim-visual-multi", branch = "master" })
+	"rmagatti/alternate-toggler",
 	-- indent
-	use("lukas-reineke/indent-blankline.nvim")
+	"lukas-reineke/indent-blankline.nvim",
 	--smooth scroll
-	use("karb94/neoscroll.nvim")
+	"karb94/neoscroll.nvim",
 	-- leap
-	use("ggandor/leap.nvim")
+	"ggandor/leap.nvim",
 	-- which key
-	use("folke/which-key.nvim")
+	"folke/which-key.nvim",
 	-- tmux
-	use("christoomey/vim-tmux-navigator")
-	use("szw/vim-maximizer")
+	"christoomey/vim-tmux-navigator",
+	"szw/vim-maximizer",
 	-- commenting with gc
-	use("numToStr/Comment.nvim")
+	"numToStr/Comment.nvim",
 	-- Telescope
-	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
+	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 	-- Telescope extensions
 	-- fzf
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	-- select ui
-	use("nvim-telescope/telescope-ui-select.nvim")
-
+	"nvim-telescope/telescope-ui-select.nvim",
 	-- formatting & linting
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("jayp0521/mason-null-ls.nvim")
+	"jose-elias-alvarez/null-ls.nvim",
+	"jayp0521/mason-null-ls.nvim",
 	-- git signs
-	use("lewis6991/gitsigns.nvim")
+	"lewis6991/gitsigns.nvim",
 	-- cursorline
-	use("yamatsum/nvim-cursorline")
+	"yamatsum/nvim-cursorline",
 	-- jupyter
-	use("luk400/vim-jukit")
+	"luk400/vim-jukit",
 	-- bufferline
-	use("akinsho/bufferline.nvim")
+	"akinsho/bufferline.nvim",
 	-- close buffer
-	use("moll/vim-bbye")
+	"moll/vim-bbye",
 	-- dashboard
-	use("goolord/alpha-nvim")
+	"goolord/alpha-nvim",
 	-- terminal
-	use("voldikss/vim-floaterm")
+	"voldikss/vim-floaterm",
 	-- lazygit integration
-	use("kdheepak/lazygit.nvim")
+	"kdheepak/lazygit.nvim",
 	-- select virtual environment for python
-	use("AckslD/swenv.nvim")
+	"AckslD/swenv.nvim",
 	-- move line and block up and down
-	use("matze/vim-move")
-	-- splitting or joining blocks of code
-	use({ "Wansmer/treesj", requires = { "nvim-treesitter" } })
+	"matze/vim-move",
 	-- better w,e,b
-	use("chrisgrieser/nvim-spider")
-
-	if packer_bootstrap then
-		require("packer").sync()
-	end
-end)
+	"chrisgrieser/nvim-spider",
+})

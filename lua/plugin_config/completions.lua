@@ -77,7 +77,7 @@ cmp.setup({
 		{ name = "cmp_tabnine", max_item_count = 4 },
 		{ name = "nvim_lsp", keyword_length = 2, max_item_count = 6 },
 	}, {
-		-- { name = "luasnip", keyword_length = 2, max_item_count = 1 },
+		{ name = "luasnip", keyword_length = 2, max_item_count = 1 },
 		{ name = "path", keyword_length = 3, max_item_count = 2 },
 		{ name = "buffer", keyword_length = 3, max_item_count = 2 },
 	}),

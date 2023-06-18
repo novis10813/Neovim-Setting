@@ -3,13 +3,8 @@ local keymap = vim.keymap
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 vim.wo.number = true
--- setup leader key
-g.mapleader = " "
-g.maplocalleader = " "
 -- setup path of python for plugin integration
 g.python3_host_prog = "/home/novis/miniconda3/envs/py3.8/bin/python3"
--- floaterm settings
-g.floaterm_keymap_toggle = "<F12>"
 -- j k to leave insert mode
 keymap.set("i", "jk", "<ESC>")
 -- clear search highlight
@@ -92,6 +87,9 @@ keymap.set("n", "<leader>38", ":JukitOut conda activate py3.8<CR>")
 -- Window and Sending Codes
 keymap.set("n", "<A-CR>", "<cmd>call jukit#send#line()<cr>", { noremap = true, silent = true })
 keymap.set("v", "<A-CR>", "<esc><cmd>call jukit#send#selection(0)<cr>", { noremap = true, silent = true })
+-- Floaterm
+keymap.set("n", "<F12>", ":FloatermNew<CR>", { desc = "New Floaterm" })
+keymap.set("t", "<F12>", "<C-\\><C-n>:FloatermKill<CR>", { desc = "Kill Floaterm" })
 
 -- plugin keymap setups with whichkey
 local wk_status, wk = pcall(require, "which-key")

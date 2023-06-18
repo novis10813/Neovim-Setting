@@ -3,7 +3,7 @@ if not treesitter_status then
 	return
 end
 treesitter.setup({
-	ensure_installed = { "vim", "lua", "python", "c" },
+	ensure_installed = {},
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = true,

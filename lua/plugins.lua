@@ -19,7 +19,7 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	"nvim-lua/popup.nvim",
 	-- icons for many projects
-	"nvim-tree/nvim-web-devicons",
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	-- colors of the words for different programming language
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -53,16 +53,21 @@ require("lazy").setup({
 	{ "glepnir/lspsaga.nvim", branch = "main" },
 	"onsails/lspkind.nvim",
 	-- auto completion
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
-	"lukas-reineke/cmp-under-comparator",
-	-- snippet engine
-	"L3MON4D3/LuaSnip",
-	"saadparwaiz1/cmp_luasnip",
-	-- snippets of vscode
-	"rafamadriz/friendly-snippets",
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"lukas-reineke/cmp-under-comparator",
+			-- snippet engine
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			-- snippets of vscode
+			"rafamadriz/friendly-snippets",
+		},
+	},
 	-- tabnine
 	{ "tzachar/cmp-tabnine", build = "./install.sh" },
 	-- codeium
@@ -104,7 +109,7 @@ require("lazy").setup({
 	-- cursorline
 	"yamatsum/nvim-cursorline",
 	-- jupyter
-	"luk400/vim-jukit",
+	{ "luk400/vim-jukit", ft = "python" },
 	-- bufferline
 	"akinsho/bufferline.nvim",
 	-- close buffer

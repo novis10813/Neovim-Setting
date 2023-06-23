@@ -5,6 +5,8 @@ vim.o.timeoutlen = 300
 vim.wo.number = true
 -- setup path of python for plugin integration
 g.python3_host_prog = "/home/novis/miniconda3/envs/py3.8/bin/python3"
+g.codeium_disable_bindings = 1
+keymap.set({ "n", "v" }, "/", "/\v", { desc = "Regex Search" })
 -- j k to leave insert mode
 keymap.set("i", "jk", "<ESC>")
 -- clear search highlight
@@ -49,10 +51,10 @@ keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle Nvi
 --telescope
 -- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
 keymap.set(
-	"n",
-	"<leader>ff",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-	{ desc = "Find Files" }
+    "n",
+    "<leader>ff",
+    "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+    { desc = "Find Files" }
 )
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Grep String" })
@@ -61,8 +63,11 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Tag
 
 -- Codeium
 keymap.set("i", "<C-e>", function()
-	return vim.fn["codeium#Clear"]()
+    return vim.fn["codeium#Clear"]()
 end, { expr = true })
+keymap.set("i", "\\", function()
+    return vim.fn["codeium#Accept"]()
+end, { expr = true, remap = true })
 -- visual mode
 -- shift + "<" or ">" to move lines
 keymap.set("v", "<", "<gv")
@@ -78,8 +83,6 @@ keymap.set("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>")
 keymap.set("n", "gt", "<cmd>TroubleToggle<cr>")
 -- toggleAlternate
 keymap.set("n", "<leader>ta", ":ToggleAlternate<CR>")
--- treesj
-keymap.set("n", "<leader>tj", ":TSJToggle<CR>")
 -- lazygit
 keymap.set("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit" })
 -- jupyter controls
@@ -90,17 +93,22 @@ keymap.set("v", "<A-CR>", "<esc><cmd>call jukit#send#selection(0)<cr>", { norema
 -- Floaterm
 keymap.set("n", "<F12>", ":FloatermNew<CR>", { desc = "New Floaterm" })
 keymap.set("t", "<F12>", "<C-\\><C-n>:FloatermKill<CR>", { desc = "Kill Floaterm" })
-
+-- leetcode
+keymap.set("n", "<leader>lq", "<cmd>LBQuestions<cr>")
+keymap.set("n", "<leader>ll", "<cmd>LBQuestion<cr>")
+keymap.set("n", "<leader>lr", "<cmd>LBReset<cr>")
+keymap.set("n", "<leader>lt", "<cmd>LBTest<cr>")
+keymap.set("n", "<leader>ls", "<cmd>LBSubmit<cr>")
 -- plugin keymap setups with whichkey
 local wk_status, wk = pcall(require, "which-key")
 if not wk_status then
-	return
+    return
 end
 
 wk.register({
-	["<leader>f"] = { name = "+file" },
-	["<leader>b"] = { name = "+buffer" },
-	["<leader>t"] = { name = "+tab" },
-	["<leader>w"] = { name = "+window" },
-	["<leader>c"] = { name = "+cell" },
+    ["<leader>f"] = { name = "+file" },
+    ["<leader>b"] = { name = "+buffer" },
+    ["<leader>t"] = { name = "+tab" },
+    ["<leader>w"] = { name = "+window" },
+    ["<leader>c"] = { name = "+cell" },
 })

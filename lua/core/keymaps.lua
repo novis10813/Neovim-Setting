@@ -5,8 +5,6 @@ vim.o.timeoutlen = 300
 vim.wo.number = true
 -- setup path of python for plugin integration
 g.python3_host_prog = "/home/novis/miniconda3/envs/py3.8/bin/python3"
-g.codeium_disable_bindings = 1
-keymap.set({ "n", "v" }, "/", "/\v", { desc = "Regex Search" })
 -- j k to leave insert mode
 keymap.set("i", "jk", "<ESC>")
 -- clear search highlight

@@ -317,7 +317,13 @@ require("lazy").setup({
         end,
     },
     -- terminal
-    { "voldikss/vim-floaterm" },
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        config = function()
+            require("plugins/toggleterm")
+        end,
+    },
     -- cmdline
     {
         "folke/noice.nvim",
@@ -331,7 +337,7 @@ require("lazy").setup({
             -- OPTIONAL:
             --   `nvim-notify` is only needed, if you want to use the notification view.
             --   If not available, we use `mini` as the fallback
-            -- "rcarriga/nvim-notify",
+            "rcarriga/nvim-notify",
         },
         config = function()
             require("plugins/noice")
@@ -354,6 +360,24 @@ require("lazy").setup({
         "chrisgrieser/nvim-spider",
         opts = {
             skipInsignificantPunctuation = false,
+        },
+    },
+    -- leetcode
+    {
+        "Dhanus3133/LeetBuddy.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("leetbuddy").setup({})
+        end,
+        keys = {
+            { "<leader>lq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
+            { "<leader>ll", "<cmd>LBQuestion<cr>",  desc = "View Question" },
+            { "<leader>lr", "<cmd>LBReset<cr>",     desc = "Reset Code" },
+            { "<leader>lt", "<cmd>LBTest<cr>",      desc = "Run Code" },
+            { "<leader>ls", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
         },
     },
 })

@@ -47,7 +47,6 @@ keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle NvimTree" })
 --telescope
--- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
 keymap.set(
     "n",
     "<leader>ff",
@@ -88,15 +87,6 @@ keymap.set("n", "<leader>38", ":JukitOut conda activate py3.8<CR>")
 -- Window and Sending Codes
 keymap.set("n", "<A-CR>", "<cmd>call jukit#send#line()<cr>", { noremap = true, silent = true })
 keymap.set("v", "<A-CR>", "<esc><cmd>call jukit#send#selection(0)<cr>", { noremap = true, silent = true })
--- Floaterm
-keymap.set("n", "<F12>", ":FloatermNew<CR>", { desc = "New Floaterm" })
-keymap.set("t", "<F12>", "<C-\\><C-n>:FloatermKill<CR>", { desc = "Kill Floaterm" })
--- leetcode
-keymap.set("n", "<leader>lq", "<cmd>LBQuestions<cr>")
-keymap.set("n", "<leader>ll", "<cmd>LBQuestion<cr>")
-keymap.set("n", "<leader>lr", "<cmd>LBReset<cr>")
-keymap.set("n", "<leader>lt", "<cmd>LBTest<cr>")
-keymap.set("n", "<leader>ls", "<cmd>LBSubmit<cr>")
 -- plugin keymap setups with whichkey
 local wk_status, wk = pcall(require, "which-key")
 if not wk_status then

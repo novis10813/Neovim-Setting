@@ -170,6 +170,7 @@ require("lazy").setup({
     -- snippet engine
     {
         "L3MON4D3/LuaSnip",
+        event = "InsertEnter",
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
@@ -252,7 +253,7 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope-ui-select.nvim",
-            { "nvim-tetescope/telescope-fzf-native.nvim", build = "make" },
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         },
         config = function()
             require("plugins/telescope")
@@ -317,6 +318,25 @@ require("lazy").setup({
     },
     -- terminal
     { "voldikss/vim-floaterm" },
+    -- cmdline
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            -- "rcarriga/nvim-notify",
+        },
+        config = function()
+            require("plugins/noice")
+        end,
+    },
     -- lazygit integration
     {
         "kdheepak/lazygit.nvim",

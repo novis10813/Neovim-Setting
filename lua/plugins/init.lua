@@ -363,4 +363,13 @@ require("lazy").setup({
             skipInsignificantPunctuation = false,
         },
     },
+    -- cmake for C
+    {
+        "Civitasv/cmake-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        ft = { "c", "cpp", "cmake" },
+        config = function()
+            require("plugins/cmake-tools")
+        end,
+    },
 })

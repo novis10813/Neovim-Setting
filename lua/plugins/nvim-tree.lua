@@ -65,7 +65,6 @@ local function on_attach(bufnr)
     -- Mappings migrated from view.mappings.list
     --
     -- You will need to insert "your code goes here" for any mappings with a custom action_cb
-    vim.keymap.set("n", "u", api.tree.change_root_to_parent, opts("Up"))
 end
 
 local nvim_tree_status, nvim_tree = pcall(require, "nvim-tree")
@@ -77,6 +76,7 @@ local HEIGHT_RATIO = 0.8 -- You can change this
 local WIDTH_RATIO = 0.5  -- You can change this too
 
 nvim_tree.setup({
+    on_attach = on_attach,
     disable_netrw = true,
     hijack_cursor = true,
     hijack_netrw = true,

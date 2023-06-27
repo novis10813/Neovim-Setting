@@ -23,7 +23,6 @@ keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split Vertically" })
 keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split Horizontally" })
 keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make Equally" })
 keymap.set("n", "<leader>wx", ":close<CR>", { desc = "Close Current" })
-keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>", { desc = "Maximize Current" })
 -- adjust window size
 keymap.set("n", "<C-Up>", ":resize +2<CR>")
 keymap.set("n", "<C-Down>", ":resize -2<CR>")
@@ -38,14 +37,11 @@ keymap.set("n", "<leader>th", ":tabp<CR>", { desc = "Prev Tab" })
 -- bufferlines move between buffers (buffer just like tabs in vscode)
 keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
 keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>", { desc = "Prev Buffer" })
-keymap.set("n", "<leader>bx", ":Bdelete<CR>", { desc = "Delete Buffer" })
 -- better w,e,b
 keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
 keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
 keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
 keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
--- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle NvimTree" })
 --telescope
 keymap.set(
     "n",
@@ -69,24 +65,6 @@ end, { expr = true, remap = true })
 -- shift + "<" or ">" to move lines
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
--- lsp saga
--- Rename all occurrences of the hovered word for the entire file
-keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
-keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
-keymap.set("n", "gp", "<cmd>Lspsaga goto_definition<CR>")
-keymap.set("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>")
-
--- trouble
-keymap.set("n", "gt", "<cmd>TroubleToggle<cr>")
--- toggleAlternate
-keymap.set("n", "<leader>ta", ":ToggleAlternate<CR>")
--- lazygit
-keymap.set("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit" })
--- jupyter controls
-keymap.set("n", "<leader>38", ":JukitOut conda activate py3.8<CR>")
--- Window and Sending Codes
-keymap.set("n", "<A-CR>", "<cmd>call jukit#send#line()<cr>", { noremap = true, silent = true })
-keymap.set("v", "<A-CR>", "<esc><cmd>call jukit#send#selection(0)<cr>", { noremap = true, silent = true })
 -- plugin keymap setups with whichkey
 local wk_status, wk = pcall(require, "which-key")
 if not wk_status then
@@ -98,5 +76,4 @@ wk.register({
     ["<leader>b"] = { name = "+buffer" },
     ["<leader>t"] = { name = "+tab" },
     ["<leader>w"] = { name = "+window" },
-    ["<leader>c"] = { name = "+cell" },
 })

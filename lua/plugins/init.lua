@@ -35,12 +35,16 @@ require("lazy").setup({
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
             "HiPhish/nvim-ts-rainbow2",
-            "windwp/nvim-ts-autotag",
+            {
+                "windwp/nvim-ts-autotag",
+                event = "InsertEnter",
+            },
             {
                 "abecodes/tabout.nvim",
                 config = function()
                     require("plugins/tabout")
                 end,
+                event = "InsertEnter",
             },
         },
     },
@@ -60,6 +64,7 @@ require("lazy").setup({
         config = function()
             require("colorizer").setup()
         end,
+        event = "VeryLazy",
     },
     --tree on the left
     {
@@ -72,6 +77,9 @@ require("lazy").setup({
             vim.g.loaded_netrwPlugin = 1
             require("plugins/nvim-tree")
         end,
+        keys = {
+            { "<leader>e", ":NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
+        },
     },
     --status bar below
     {
@@ -123,6 +131,12 @@ require("lazy").setup({
         config = function()
             require("plugins/lsp/lspsaga")
         end,
+        keys = {
+            { "gr", "<cmd>Lspsaga rename<CR>",           desc = "Lsp Rename" },
+            { "gd", "<cmd>Lspsaga peek_definition<CR>",  desc = "Peek Definition" },
+            { "gp", "<cmd>Lspsaga goto_definition<CR>",  desc = "Goto Definition" },
+            { "K",  "<cmd>Lspsaga hover_doc ++keep<CR>", desc = "Hover Document" },
+        },
     },
     -- lsp progress
     {
@@ -134,6 +148,7 @@ require("lazy").setup({
         config = function()
             require("plugins/lsp/fidget")
         end,
+        event = "VeryLazy",
     },
     -- Diagnostics troubles
     {
@@ -142,6 +157,9 @@ require("lazy").setup({
         config = function()
             require("plugins/lsp/trouble")
         end,
+        keys = {
+            { "gt", "<cmd>TroubleToggle<cr>", desc = "Trouble Toggle" },
+        },
     },
     --semantic tokens
     {
@@ -199,6 +217,7 @@ require("lazy").setup({
         config = function()
             require("nvim-surround").setup()
         end,
+        event = "VeryLazy",
     },
     -- toggler for true and false
     {
@@ -206,6 +225,9 @@ require("lazy").setup({
         config = function()
             require("alternate-toggler").setup({})
         end,
+        keys = {
+            { "<leader>ta", ":ToggleAlternate<CR>", desc = "Toggle True False" },
+        },
     },
     -- indent
     {
@@ -214,6 +236,7 @@ require("lazy").setup({
         config = function()
             require("plugins/indent")
         end,
+        event = "VeryLazy",
     },
     --smooth scroll
     {
@@ -221,6 +244,7 @@ require("lazy").setup({
         config = function()
             require("plugins/smoothscroll")
         end,
+        event = "VeryLazy",
     },
     -- leap
     {
@@ -228,6 +252,7 @@ require("lazy").setup({
         config = function()
             require("leap").add_default_mappings()
         end,
+        event = "VeryLazy",
     },
     -- which key
     {
@@ -239,13 +264,19 @@ require("lazy").setup({
     },
     -- tmux
     { "christoomey/vim-tmux-navigator" },
-    { "szw/vim-maximizer" },
+    {
+        "szw/vim-maximizer",
+        keys = {
+            { "<leader>wm", ":MaximizerToggle<CR>", desc = "Maximize Current" },
+        },
+    },
     -- commenting with gc
     {
         "numToStr/Comment.nvim",
         config = function()
             require("Comment").setup()
         end,
+        event = "InsertEnter",
     },
     -- Telescope
     {
@@ -266,6 +297,7 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
+        event = "VeryLazy",
     },
     -- cursorline
     {
@@ -284,7 +316,7 @@ require("lazy").setup({
         },
     },
     -- jupyter
-    { "luk400/vim-jukit", ft = "python" },
+    { "luk400/vim-jukit",              ft = { "python", "json" } },
     -- bufferline
     {
         "akinsho/bufferline.nvim",
@@ -305,7 +337,7 @@ require("lazy").setup({
         },
     },
     -- close buffer
-    { "moll/vim-bbye" },
+    { "moll/vim-bbye", keys = { { "<leader>bx", ":Bdelete<CR>", desc = "Delete Buffer" } } },
     -- dashboard
     {
         "goolord/alpha-nvim",
@@ -324,6 +356,7 @@ require("lazy").setup({
         config = function()
             require("plugins/toggleterm")
         end,
+        event = "VeryLazy",
     },
     -- cmdline
     {
@@ -348,6 +381,9 @@ require("lazy").setup({
     {
         "kdheepak/lazygit.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
+        keys = {
+            { "<leader>lg", ":LazyGit<CR>", desc = "LazyGit" },
+        },
     },
     -- select virtual environment for python
     {
@@ -362,6 +398,7 @@ require("lazy").setup({
         opts = {
             skipInsignificantPunctuation = false,
         },
+        event = "InsertEnter",
     },
     -- cmake for C
     {

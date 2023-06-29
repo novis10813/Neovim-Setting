@@ -252,7 +252,6 @@ require("lazy").setup({
         config = function()
             require("leap").add_default_mappings()
         end,
-        event = "VeryLazy",
     },
     -- which key
     {
@@ -297,6 +296,9 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
+        config = function()
+            require("gitsigns").setup({})
+        end,
         event = "VeryLazy",
     },
     -- cursorline
@@ -316,7 +318,22 @@ require("lazy").setup({
         },
     },
     -- jupyter
-    { "luk400/vim-jukit",              ft = { "python", "json" } },
+    {
+        "luk400/vim-jukit",
+        ft = { "python", "json" },
+        config = function()
+            -- jupyter controls
+            vim.keymap.set("n", "<leader>38", ":JukitOut conda activate py3.8<CR>")
+            -- Window and Sending Codes
+            vim.keymap.set("n", "<A-CR>", "<cmd>call jukit#send#line()<cr>", { noremap = true, silent = true })
+            vim.keymap.set(
+                "v",
+                "<A-CR>",
+                "<esc><cmd>call jukit#send#selection(0)<cr>",
+                { noremap = true, silent = true }
+            )
+        end,
+    },
     -- bufferline
     {
         "akinsho/bufferline.nvim",
@@ -337,7 +354,7 @@ require("lazy").setup({
         },
     },
     -- close buffer
-    { "moll/vim-bbye", keys = { { "<leader>bx", ":Bdelete<CR>", desc = "Delete Buffer" } } },
+    { "moll/vim-bbye",                 keys = { { "<leader>bx", ":Bdelete<CR>", desc = "Delete Buffer" } } },
     -- dashboard
     {
         "goolord/alpha-nvim",

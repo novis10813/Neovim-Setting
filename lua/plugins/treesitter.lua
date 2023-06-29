@@ -51,9 +51,10 @@ treesitter.setup({
                 ["]f"] = { query = "@function.outer", desc = "Next function start" },
                 ["]c"] = { query = "@class.outer", desc = "Next class start" },
                 ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
+                ["]a"] = { query = "@parameter.inner", desc = "Next argument start" },
                 --
                 -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queires.
-                ["]o"] = "@loop.*",
+                -- ["]o"] = "@loop.*",
                 -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
                 --
                 -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
@@ -65,16 +66,19 @@ treesitter.setup({
                 ["]F"] = { query = "@function.outer", desc = "Next function end" },
                 ["]C"] = { query = "@class.outer", desc = "Next class end" },
                 ["]L"] = { query = "@loop.outer", desc = "Next loop end" },
+                ["]A"] = { query = "@parameter.outer", desc = "Next argument end" },
             },
             goto_previous_start = {
                 ["[f"] = { query = "@function.outer", desc = "Previous function start" },
                 ["[c"] = { query = "@class.outer", desc = "Previous class start" },
                 ["[l"] = { query = "@loop.outer", desc = "Previous loop start" },
+                ["[a"] = { query = "@parameter.inner", desc = "Previous argument start" },
             },
             goto_previous_end = {
                 ["[F"] = { query = "@function.outer", desc = "Previous function end" },
                 ["[C"] = { query = "@class.outer", desc = "Previous class end" },
                 ["[L"] = { query = "@loop.outer", desc = "Previous loop end" },
+                ["[A"] = { query = "@parameter.outer", desc = "Previous argument end" },
             },
             -- Below will go to either the start or the end, whichever is closer.
             -- Use if you want more granular movements

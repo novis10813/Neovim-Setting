@@ -58,7 +58,7 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Tag
 keymap.set("i", "<C-e>", function()
     return vim.fn["codeium#Clear"]()
 end, { expr = true })
-keymap.set("i", "\\", function()
+keymap.set("i", "<C-\\>", function()
     return vim.fn["codeium#Accept"]()
 end, { expr = true, remap = true })
 -- visual mode

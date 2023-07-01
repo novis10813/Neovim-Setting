@@ -44,6 +44,15 @@ treesitter.setup({
                 ["@class.outer"] = "<c-v>",
             },
         },
+        swap = {
+            enable = true,
+            swap_next = {
+                ["<leader>a"] = "@parameter.inner",
+            },
+            swap_previous = {
+                ["<leader>A"] = "@parameter.inner",
+            },
+        },
         move = {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
@@ -52,6 +61,7 @@ treesitter.setup({
                 ["]c"] = { query = "@class.outer", desc = "Next class start" },
                 ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
                 ["]a"] = { query = "@parameter.inner", desc = "Next argument start" },
+                ["]g"] = { query = "@comment.outer", desc = "Next Comment" },
                 --
                 -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queires.
                 -- ["]o"] = "@loop.*",
@@ -66,19 +76,20 @@ treesitter.setup({
                 ["]F"] = { query = "@function.outer", desc = "Next function end" },
                 ["]C"] = { query = "@class.outer", desc = "Next class end" },
                 ["]L"] = { query = "@loop.outer", desc = "Next loop end" },
-                ["]A"] = { query = "@parameter.outer", desc = "Next argument end" },
+                -- ["]A"] = { query = "@parameter.outer", desc = "Next argument end" },
             },
             goto_previous_start = {
                 ["[f"] = { query = "@function.outer", desc = "Previous function start" },
                 ["[c"] = { query = "@class.outer", desc = "Previous class start" },
                 ["[l"] = { query = "@loop.outer", desc = "Previous loop start" },
                 ["[a"] = { query = "@parameter.inner", desc = "Previous argument start" },
+                ["[g"] = { query = "@comment.outer", desc = "Previous Comment" },
             },
             goto_previous_end = {
                 ["[F"] = { query = "@function.outer", desc = "Previous function end" },
                 ["[C"] = { query = "@class.outer", desc = "Previous class end" },
                 ["[L"] = { query = "@loop.outer", desc = "Previous loop end" },
-                ["[A"] = { query = "@parameter.outer", desc = "Previous argument end" },
+                -- ["[A"] = { query = "@parameter.outer", desc = "Previous argument end" },
             },
             -- Below will go to either the start or the end, whichever is closer.
             -- Use if you want more granular movements
